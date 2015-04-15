@@ -1,0 +1,3 @@
+TracEx.properties
+アップロード.bat
+アップロード除外.txt

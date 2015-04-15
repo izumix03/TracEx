@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<form th:fragment="attachment" id="attachment" role="form" class="form-horizontal" >
+	<script src="../lib/dropzone/dropzone.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/dropzone/dropzone.css" />
+	<link rel="stylesheet" type="text/css" href="lib/dropzone/basic.css" />
+
+	
+	<blockquote>
+		<p>添付ファイル</p>
+	</blockquote>	
+	
+	<div id="file_drop_area" class="dropzone-custom">ドロップして下さい</div>
+	
+	<script>
+	$(function(){
+	    $('#file_drop_area').dropzone({
+	        url:"ajax/ATTACHMENT",
+	        paramName:'files',
+	        maxFilesize:500, //MB
+	        addRemoveLinks:true,
+	        thumbnailWidth:100, //px
+	        thumbnailHeight:100, //px
+	        uploadprogress:function(_file, _progress, _size){
+	            _file.previewElement.querySelector("[data-dz-uploadprogress]").style.width = "" + _progress + "%";
+	        },
+	        success:function(_file, _return, _xml){
+	            _file.previewElement.classList.add("dz-success");
+	        },
+	        error:function(_file, _error_msg){
+	            var ref;
+	            (ref = _file.previewElement) != null ? ref.parentNode.removeChild(_file.previewElement) : void 0;
+	        },
+	        removedfile:function(_file){
+	            var ref;
+	            (ref = _file.previewElement) != null ? ref.parentNode.removeChild(_file.previewElement) : void 0;
+	        },
+	        dictRemoveFile:'削除',
+	        dictCancelUpload:'キャンセル'
+	    });
+	});
+	</script>
+</form>
+</html>

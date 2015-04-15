@@ -1,0 +1,20 @@
+#contents{
+	position: relative;
+	background: url(http://www.worksap.co.jp/img/mainConcept.png) no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding: 0px 0px ;
+}
+
+#contents img.profile{
+	width		: 91px;
+	height		: 120px;	
+	min-width	: 91px;
+	max-height	: 120px;
+}
+
+#profile {
+    padding: 200px 1500px 0px 10px;
+    margin: 0 auto;
+}
+

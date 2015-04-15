@@ -1,0 +1,71 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'fatjar'
+
+version = '0.1'
+
+// Config for plugin
+buildscript {
+    repositories {
+    	mavenCentral()
+	    ivy {
+    		url "http://download.java.net/maven/2"
+    	}
+    }
+    dependencies {
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.2'
+    }
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.6'
+    compile 'org.eclipse.jetty:jetty-server:9.2.+'
+    compile 'joda-time:joda-time:2.+'
+    compile 'org.apache.commons:commons-lang3:3.3.+'
+    compile 'commons-io:commons-io:2.+'
+    compile 'org.thymeleaf:thymeleaf:2.1.3.RELEASE'
+    compile 'commons-dbutils:commons-dbutils:1.+'
+    compile 'org.apache.tomcat:tomcat-jdbc:8.0.+'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'
+    compile 'commons-beanutils:commons-beanutils:1.9.2'
+    compile 'commons-daemon:commons-daemon:1.0.+'
+    compile 'org.tmatesoft.svnkit:svnkit:1.8.5'
+    compile 'javax.mail:javax.mail-api:1.4.7'
+    compile 'velocity:velocity-dep:1.4'
+    compile 'org.elasticsearch:elasticsearch:1.4.4'
+    compile 'com.google.code.gson:gson:1.7.2'
+    
+    runtime 'ch.qos.logback:logback-classic:1.1.2'
+    runtime 'mysql:mysql-connector-java:5.+'	
+    testCompile 'junit:junit:4.+'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class" : "iz.tracex.TracExMain"
+        attributes 'Implementation-Title': 'TracEx',
+        'Implementation-Version': version
+    }
+}
+
+fatJar {
+    manifest {
+        attributes "Main-Class" : "iz.tracex.TracExMain"
+        attributes 'Implementation-Title': 'TracEx',
+        'Implementation-Version': version
+    }
+    classifier "assembly"
+    exclude ('META-INF/*.DSA', '**/logback-test.xml')
+
+    destinationDir = file("./dist")
+    archiveName = 'trac-ex.jar'
+}

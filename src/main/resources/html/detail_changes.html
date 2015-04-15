@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<form th:fragment="detail_changes" id="detail_changes" class="form-horizontal"
+	role="form" method="">
+
+	<blockquote>
+		<p>変更履歴</p>
+	</blockquote>
+	
+	<hr />
+	
+
+	<div th:if="${ticketChangeUnitList.size != 0 and ticketChangeUnitList[0].changes.size!=0}" th:each="changeUnit : ${ticketChangeUnitList}" class="well well-sm">
+		<div class="row">
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr class="active">
+					<th colspan="3" class="table-fixed-cell" th:text="${'変更者:' + changeUnit.author +'@'+  changeUnit.timeStr()}">NoData</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="change: ${changeUnit.changes}">
+				<div th:if="${change.field!='comment'}">
+					<td class="col-sm-2" th:text="${change.field}"></td>
+					
+					<td th:if="${change.needTwoCol()}==false" class="col-sm-5">
+						<pre th:if="${change.needTwoCol()}==false" th:text="${change.oldvalue}"></pre>
+					</td>
+					
+					<td th:if="${change.needTwoCol()}==false" class="col-sm-5">
+						<pre th:text="${change.newvalue}"></pre>		
+					</td>
+					<td th:if="${change.needTwoCol()==true}" colspan="2">
+						<pre th:text="${change.newvalue}"></pre>
+					</td>
+				</div>								
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		
+		<div th:if="${changeUnit.getCommentIndex()!=-1}" class="comment">
+		<div class="row">
+			<a th:if="${changeUnit.changes[changeUnit.getCommentIndex()].isSvnCommitLog()} == true" th:text="${changeUnit.changes[changeUnit.getCommentIndex()].getRevesionOrNull()}" th:href="${'svn_diff?rev=' + changeUnit.changes[changeUnit.getCommentIndex()].getRevesionOrNull()}"></a>
+			<pre th:text="${changeUnit.changes[changeUnit.getCommentIndex()].newvalue}" class="comment-pre"></pre>
+		</div>
+		</div>
+	</div>
+	
+</form>
+
+</html>

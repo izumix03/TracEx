@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common :: common_head"></head>
+<body>
+  <nav th:substituteby="common :: common_nav"></nav>
+  <div class="container" th:if="${notFound}">
+    <div class="alert alert-danger" role="alert">
+      <strong>Ticket was not found!</strong>
+      <span th:text="${ticket.id}"></span>
+      <span> is invalid number.</span>
+    </div>
+  </div>
+
+  <div class="container" th:unless="${notFound}">
+    <div class="alert alert-danger alert-dismissible col-sm-6" role="alert" th:if="${lockFailed}">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+      </button>
+      <strong>Error!</strong> This ticket has already been modified. Please RELOAD and retry.
+    </div>
+
+    <div class="row">
+      <div class="col-sm-9">
+        <h3 th:if="${ticket.id == 0}">New Ticket</h3>
+        <h3 th:if="${ticket.id != 0}" th:text="${ticket.id + ' (' + ticket.status + ') : ' + ticket.summary}"></h3>
+      </div>
+      <div class="col-sm-3 ticket-time">
+        <span>Created at </span><span th:text="${ticket.timeStr()}"></span><br />
+        <span>Changed at </span><span th:text="${ticket.changetimeStr()}"></span>
+      </div>
+    </div>
+
+    <div role="tabpanel">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#ticket-tab" role="tab" data-toggle="tab">チケット</a>
+        </li>
+        <li role="presentation">
+          <a href="#doc-tab"  role="tab" data-toggle="tab">開発内容説明書(Doc)</a>
+        </li>
+        <li role="presentation">
+          <a href="#changes-tab" role="tab" data-toggle="tab">変更履歴</a>
+        </li>
+        <li role="presentation">
+          <a href="#attachment-tab" role="tab" data-toggle="tab">添付ファイル</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div id="ticket-tab" role="tabpanel" class="tab-pane active">
+          <div th:replace="detail_ticket :: detail_ticket"></div>
+        </div>
+
+        <div id="doc-tab" role="tabpanel" class="tab-pane fade">
+		  <div th:replace="doc :: doc"></div>
+        </div>
+
+        <div id="changes-tab" role="tabpanel" class="tab-pane fade">
+        	<div th:replace="detail_changes :: detail_changes"></div>
+        </div>
+        
+        <div id="attachment-tab" role="tabpanel" class="tab-pane fade">
+        	<div th:replace="attachment :: attachment"></div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <!-- popup -->
+  <div id="popup" style="display: none;width:200px;height:50px;background-color:#446e9b;text-align: center;"><span style="line-height: 50px;color: white;">更新しました。</span></div>
+  
+  <!-- 別タブjs -->
+  <script src="../js/detail.js"></script>
+  <script src="../js/detail-ticket.js"></script>
+  <script src="../js/detail-doc.js"></script>
+  
+</body>
+</html>

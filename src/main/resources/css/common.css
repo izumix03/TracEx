@@ -1,0 +1,57 @@
+html{
+	overflow:scroll;
+}
+
+body {
+  padding: 50px 0 0 0;
+}
+
+.nav-page{
+  font-size:13px;
+}
+
+.index-img {
+  padding: 0px;
+  
+}
+
+.typeahead-empty {
+  padding: 2px 0px 2px 4px;
+}
+
+.typeahead-header {
+  padding: 0px 4px;
+}
+
+.tt-dropdown-menu {
+  width: auto;
+  font-size: 13px;
+}
+
+input.ticket_search{
+	margin-top:12px;
+	margim-bottom:12px;
+}
+
+blockquote{
+	margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+blockquote>p{
+	padding-left:5px;
+}
+
+hr{
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+.modal-backdrop {
+  z-index: 1020; 
+}
+
+.modal-dialog{
+  z-index: 1040;
+}
+

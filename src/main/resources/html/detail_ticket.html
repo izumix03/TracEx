@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<form th:fragment="detail_ticket" id="ticket" class="form-horizontal" role="form" method="POST">
+	<input type="hidden" name="update-ticket" />
+	<input type="hidden" name="id" th:value="${ticket.id}" />
+	<input type="hidden" name="time" th:value="${ticket.time}" />
+	<input type="hidden" name="changetime" th:value="${ticket.changetime}" />
+	<input type="hidden" name="doc_tester_memo" th:value="${ticketCustom.getValue('doc_tester_memo')}"></input>
+	<input type="hidden" name="doctext_check" th:value="${ticketCustom.getValue('doctext_check')}"></input>
+	<input type="hidden" name="doc_check_memo" th:value="${ticketCustom.getValue('doc_check_memo')}"></input>
+	
+	
+	
+	<blockquote>
+		<p>基本情報 </p>
+	</blockquote>
+	<div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">概要</label>
+        <div class="col-sm-10">
+          <input type="text" name="summary" class="form-control required" th:value="${ticket.summary}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">説明</label>
+        <div class="col-sm-10">
+          <textarea name="description" class="form-control required" rows="15" th:text="${ticket.description}"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" style="font-size: 11px;">マイルストーン</label>
+        <div class="col-sm-3">
+          <input type="text" name="milestone" class="form-control required" th:value="${ticket.milestone}" />
+        </div>
+        <label class="col-sm-2 control-label">重要度</label>
+        <div class="col-sm-1">
+          <select name="severity" class="form-control" style="padding-right: 0px;padding-left: 0px;">
+            <option th:each="s : ${severities}" th:value="${s}" th:text="${s}" th:selected="${s.equals(ticket.severity)}"></option>
+          </select>
+        </div>
+        <label class="col-sm-1 control-label">分類</label>
+        <div class="col-sm-3">
+          <select name="type" class="form-control">
+            <option th:each="s : ${ticket_types}" th:value="${s}" th:text="${s}" th:selected="${s.equals(ticket.type)}"></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">関係者</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="cc" th:value="${ticket.cc}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">発生区分</label>
+        <div class="col-sm-4">
+          <select name="occurrence_reason" class="form-control">
+            <option th:each="s : ${occurrence_reasons}" th:value="${s}" th:text="${s}" th:selected="${s.equals(ticketCustom.getValue('occurrence_reason'))}"></option>
+          </select>
+        </div>
+        <label class="col-sm-2 control-label">申請区分</label>
+        <div class="col-sm-3">
+          <select name="apply_div" class="form-control">
+            <option th:each="s : ${apply_divs}" th:value="${s}" th:text="${s}" th:selected="${s.equals(ticketCustom.getValue('apply_div'))}"></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">タグ</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="tag" th:value="${ticketCustom.getValue('tag')}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="col-sm-3 control-label">product_code</label>
+        <div class="col-sm-6">
+          <select name="product_code" class="form-control">
+            <option th:each="p : ${product_codes}" th:value="${p.id}" th:text="${p.name}" th:selected="${p.id == ticketCustom.getValue('product_code')}"></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">コンポーネント</label>
+        <div class="col-sm-6">
+          <select name="component" class="form-control">
+            <option th:each="c : ${components}" th:value="${c.name}" th:text="${c.name}" th:selected="${c.name.equals(ticket.component)}"></option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">バージョン</label>
+        <div class="col-sm-6">
+          <select name="version" class="form-control">
+            <option th:each="v : ${versions}" th:value="${v.name}" th:text="${v.name}" th:selected="${v.name.equals(ticket.version)}"></option>
+          </select>
+        </div>	
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">サブシステム</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control required" name="subsystem" th:value="${ticketCustom.getValue('subsystem')}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">機能分類</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control required" name="function_group" th:value="${ticketCustom.getValue('function_group')}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">報告者</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control required" name="reporter" th:value="${ticket.id > 0 ? ticket.reporter : userId}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">開発者</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control required" name="owner" th:value="${ticket.owner}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">評価者</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control required" name="evaluator" th:value="${ticketCustom.getValue('evaluator')}" />
+        </div>
+      </div>
+      
+      <div class="form-group"></div>
+      <div class="form-group"></div>
+      
+      <div class="form-group">
+      	<label class="col-sm-3 control-label">暫定リリース</label>
+      	<label class="col-sm-1 control-label checkbox-inline"> 
+			<input name="pre_release" type="checkbox" th:checked="${ticketCustom.getValue('pre_release')}=='1'" />
+		</label>      
+      	<label class="col-sm-3 control-label" >＠SUPPORT番号</label>
+      	<div class="col-sm-2">
+          <input type="text" class="form-control" name="at_suport_trouble_no" th:value="${ticketCustom.getValue('at_suport_trouble_no')}" />
+        </div>
+      </div>
+      
+      <div class="form-group">
+      	<label class="col-sm-3 control-label">顧客</label>
+      	<div class="col-sm-6">
+          <input type="text" class="form-control" name="client" th:value="${ticketCustom.getValue('client')}" />
+        </div>
+      </div>
+    </div>
+    
+   
+  </div>
+
+	
+	
+<!-- 開発メモ -->
+	<hr/>
+	<blockquote>
+		<a data-toggle="collapse" href="#developersMemo" aria-controls="developersMemo">開発メモ</a>
+	</blockquote>
+
+<div class="collapse" id="developersMemo" >
+	<div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="col-sm-3 control-label">キーワード</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="keywords" th:value="${ticket.keywords}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">終了日</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="due_close" th:value="${ticketCustom.getValue('due_close')}" />
+        </div>
+      </div>      
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="col-sm-3 control-label">開発メモ</label>
+        <div class="col-sm-9">
+          <textarea class="form-control" rows="10" name="developper_note" th:text="${ticketCustom.getValue('developper_note')}"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!--status&comments-->	
+	<hr/>
+	<blockquote>
+		<p>ステータス</p>
+	</blockquote>
+	<div class="row" th:if="${ticket.id > 0}">	
+	    <div class="form-group col-sm-6">
+	      <label class="col-sm-3 control-label">ステータス</label>
+	      <div class="col-sm-3">
+	        <select name="status" class="form-control">
+	          <option th:each="s : ${statusDefs}" th:value="${s}" th:text="${s}" th:selected="${s.equals(ticket.status)}"></option>
+	        </select>
+	      </div>
+	      <div id="resolution-area" class="col-sm-6" style="display: none;">
+	        <label class="col-sm-6 control-label">解決方法</label>
+	        <div class="col-sm-6">
+	          <select name="resolution" class="form-control">
+	            <option th:each="r : ${resolutions}" th:value="${r}" th:text="${r}" th:selected="${r.equals(ticket.resolution)}"></option>
+	          </select>
+	        </div>
+	      </div>
+	    </div>
+  	
+  	    <div class="form-group col-sm-6">
+	      <label class="col-sm-3 control-label">コメント</label>
+	      <div class="col-sm-9">
+	        <textarea class="form-control" rows="3" name="comment"></textarea>
+	      </div>
+	    </div>
+	</div>
+
+	<div class="row data-update" style="display: none;">
+	  
+	  <div class="col-sm-3">
+	  	<button id="submit-ticket" type="button" class="btn btn-primary btn-lg" data-loading-text="Loading...">
+	    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Submit
+	  	</button>
+	  </div>
+	  
+	  <div class="col-sm-9">
+		  <button id="copy-ticket" th:if="${ticket.id != 0}" type="button" class="btn btn-default btn-lg pull-right" data-loading-text="Loading...">
+		    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Copy This Ticket 
+		  </button>
+	  </div>
+	  
+	</div>
+</form>
+
+
+</html>

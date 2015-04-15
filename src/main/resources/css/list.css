@@ -1,0 +1,65 @@
+#criteria .form-group .control-label {
+  padding-right: 15px;
+}
+
+#additional .ticket-fields {
+  max-height: 200px;
+  overflow: auto;
+}
+
+#additional .glyphicon {
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+}
+
+#additional .sort-select {
+  margin-left: 20px;
+}
+
+.ticket-grp {
+  padding: 2px 0px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.tickets pre {
+  margin: 0;
+  padding: 0;
+  background: inherit;
+  border: none;
+  overflow: auto;
+  white-space: pre-wrap;
+  max-width : 400px;
+  min-width : 300px;
+  max-height: 200px;
+}
+
+.tickets th{
+  white-space: nowrap;
+}
+
+.tickets span{
+  white-space: pre;
+}
+
+button{
+  width:120px;
+}
+
+.groupBy{
+	height: 10px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	border: 1px solid rgba(72, 216, 194, 0.22);
+	background-color: rgba(72, 216, 194, 0.22);
+}
+
+select[multiple]{
+	height: 32px;
+}
+
+body{
+  margin-bottom: 300px;
+}

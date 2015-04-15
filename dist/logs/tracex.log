@@ -1,0 +1,166 @@
+11:00:48.793 INFO  org.elasticsearch.plugins - [Ord] loaded [], sites []
+11:00:49.386 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:00:49.401 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:00:49.401 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:00:49.401 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:00:49.401 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:00:49.401 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:03:23.542 INFO  iz.tracex.BatchMain - Batch finished. time = 154.0s
+11:32:03.919 INFO  iz.tracex.TracExMain - Start!
+11:32:03.924 INFO  iz.tracex.TracExService - Start service.
+11:32:03.927 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:32:03.933 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:32:03.933 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:32:03.933 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:32:03.933 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:32:03.934 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:32:55.828 INFO  iz.tracex.TracExMain - Start!
+11:32:55.833 INFO  iz.tracex.TracExService - Start service.
+11:32:55.836 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:32:55.843 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:32:55.844 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:32:55.844 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:32:55.844 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:32:55.844 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:33:01.404 INFO  iz.tracex.TracExMain - Start!
+11:33:01.409 INFO  iz.tracex.TracExService - Start service.
+11:33:01.411 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:33:01.417 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:33:01.417 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:33:01.417 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:33:01.417 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:33:01.417 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:33:14.054 INFO  iz.tracex.TracExMain - Start!
+11:33:14.061 INFO  iz.tracex.TracExService - Start service.
+11:33:14.063 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:33:14.069 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:33:14.069 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:33:14.069 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:33:14.069 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:33:14.069 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:34:34.466 INFO  iz.tracex.TracExMain - Start!
+11:34:34.466 INFO  iz.tracex.TracExService - Start service.
+11:34:34.466 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:34:34.466 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:34:34.466 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:34:34.466 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:34:34.466 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:34:34.466 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:46:57.843 INFO  iz.tracex.TracExMain - Start!
+11:46:57.843 INFO  iz.tracex.TracExService - Start service.
+11:46:57.843 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:46:57.859 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:46:57.859 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:46:57.859 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:46:57.859 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:46:57.859 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:47:00.012 INFO  iz.tracex.TracExMain - Start!
+11:47:00.027 INFO  iz.tracex.TracExService - Start service.
+11:47:00.027 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:47:00.027 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:47:00.027 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:47:00.027 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:47:00.027 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:47:00.027 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:47:01.400 INFO  iz.tracex.TracExMain - Start!
+11:47:01.400 INFO  iz.tracex.TracExService - Start service.
+11:47:01.400 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:47:01.400 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:47:01.400 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:47:01.400 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:47:01.400 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:47:01.400 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:51:33.173 INFO  iz.tracex.TracExMain - Start!
+11:51:33.178 INFO  iz.tracex.TracExService - Start service.
+11:51:33.181 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:51:33.188 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:51:33.188 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:51:33.188 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:51:33.188 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:51:33.188 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:54:03.769 INFO  iz.tracex.TracExMain - Start!
+11:54:03.774 INFO  iz.tracex.TracExService - Start service.
+11:54:03.777 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:54:03.785 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:54:03.785 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:54:03.785 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:54:03.785 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:54:03.785 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:54:23.161 INFO  iz.tracex.TracExMain - Start!
+11:54:23.166 INFO  iz.tracex.TracExService - Start service.
+11:54:23.170 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:54:23.175 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:54:23.176 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:54:23.176 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:54:23.176 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:54:23.176 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:54:28.796 INFO  iz.tracex.TracExMain - Start!
+11:54:28.801 INFO  iz.tracex.TracExService - Start service.
+11:54:28.803 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:54:28.810 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:54:28.810 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:54:28.810 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:54:28.810 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:54:28.810 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:54:32.031 INFO  iz.tracex.TracExMain - Start!
+11:54:32.036 INFO  iz.tracex.TracExService - Start service.
+11:54:32.039 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:54:32.045 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:54:32.045 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:54:32.045 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:54:32.046 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:54:32.046 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:54:33.411 INFO  iz.tracex.TracExMain - Start!
+11:54:33.416 INFO  iz.tracex.TracExService - Start service.
+11:54:33.419 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:54:33.426 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:54:33.426 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:54:33.426 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:54:33.426 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:54:33.426 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:54:49.277 INFO  iz.tracex.TracExMain - Start!
+11:54:49.283 INFO  iz.tracex.TracExService - Start service.
+11:54:49.286 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:54:49.293 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:54:49.293 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:54:49.293 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:54:49.294 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:54:49.294 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:55:26.794 INFO  iz.tracex.TracExMain - Start!
+11:55:26.810 INFO  iz.tracex.TracExService - Start service.
+11:55:26.810 INFO  iz.tracex.TracExMain - Load properties from C:\skillUp\TracEx\dist\TracEx.properties
+11:55:26.810 INFO  iz.tracex.TracExMain - Apply default value. DATABASE = ccm
+11:55:26.810 INFO  iz.tracex.TracExMain - Apply default value. DEVELOP = false
+11:55:26.810 INFO  iz.tracex.TracExMain - Apply default value. ELASTICIP = 172.27.91.238
+11:55:26.810 INFO  iz.tracex.TracExMain - Apply default value. ELASTICPORT = 9300
+11:55:26.810 INFO  iz.tracex.TracExMain - Apply default value. ELASTICCLUSTERNAME = elasticsearch
+11:55:29.524 INFO  iz.tracex.TracExService - Port number = 8088
+11:55:29.540 INFO  org.eclipse.jetty.util.log - Logging initialized @3058ms
+11:55:29.587 INFO  o.eclipse.jetty.server.Server - jetty-9.2.z-SNAPSHOT
+11:55:29.961 INFO  i.t.s.SystemTimeInitializer - Database now = 2015-04-09 11:55:22.0
+11:55:29.977 INFO  o.e.j.s.handler.ContextHandler - Started o.e.j.s.h.ContextHandler@467463b3{/,null,AVAILABLE}
+11:55:29.992 INFO  o.e.j.server.ServerConnector - Started ServerConnector@645bb9b8{HTTP/1.1}{0.0.0.0:8088}
+11:55:29.992 INFO  o.eclipse.jetty.server.Server - Started @3510ms
+11:55:30.553 INFO  org.thymeleaf.TemplateEngine - [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+11:55:30.679 INFO  o.t.t.AbstractTemplateResolver - [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+11:55:30.679 INFO  o.t.t.AbstractTemplateResolver - [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
+11:55:30.679 INFO  o.t.m.AbstractMessageResolver - [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.messageresolver.StandardMessageResolver
+11:55:30.679 INFO  o.t.m.AbstractMessageResolver - [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
+11:55:30.684 INFO  o.t.TemplateEngine.CONFIG - [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
+[THYMELEAF] * Cache Factory implementation: org.thymeleaf.cache.StandardCacheManager
+[THYMELEAF] * Template modes:
+[THYMELEAF]     * LEGACYHTML5
+[THYMELEAF]     * VALIDXHTML
+[THYMELEAF]     * VALIDXML
+[THYMELEAF]     * HTML5
+[THYMELEAF]     * XML
+[THYMELEAF]     * XHTML
+[THYMELEAF] * Template resolvers (in order):
+[THYMELEAF]     * org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+[THYMELEAF] * Message resolvers (in order):
+[THYMELEAF]     * org.thymeleaf.messageresolver.StandardMessageResolver
+[THYMELEAF] * Dialect: org.thymeleaf.standard.StandardDialect
+[THYMELEAF]     * Prefix: "th"
+[THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
+11:55:30.684 INFO  org.thymeleaf.TemplateEngine - [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+11:55:39.828 INFO  org.elasticsearch.plugins - [Horus] loaded [], sites []

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="common_head">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title th:text="${title}"></title>
+
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-beta.3/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootswatch.min.css" />
+  <link rel="stylesheet" type="text/css" href="lib/typeahead/typeahead.css" />
+  <link rel="stylesheet" type="text/css" href="lib/datepicker/datepicker3.css" />
+  <link rel="stylesheet" type="text/css" href="css/common.css" />
+  <link rel="stylesheet" type="text/css" th:href="'css/' + ${css} + '.css'" th:if="${css}" />
+  
+  <script type="text/javascript" src="lib/jquery/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="lib/typeahead/typeahead.bundle.min.js"></script>
+  <script type="text/javascript" src="lib/datepicker/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="lib/validation/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="lib/handlebars/handlebars-v2.0.0.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+</head>
+
+<nav th:fragment="common_nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <input type="hidden" id="userId" th:value="${userId}"/> 
+  <div class="container">
+    <div class="navbar-header">
+      <!-- 
+      <a class="navbar-brand index-img">
+        <img alt="Brand" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl2TWicR3AJLyOLS42Oe90TOD0OfT3t1XrMVEBG0UXXJBsQndg" style="width: 69px;"/>
+      </a>
+       -->
+      <a class="navbar-brand" href="index">TracEX</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>&nbsp;&nbsp;&nbsp;</li>
+        <li><a class="nav-page" href="list">Search tickets</a></li>
+        <li><a class="nav-page" href="detail">Entry new ticket</a></li>
+      </ul>
+      　　　<form id="elastic" class="navbar-form navbar-right" method="GET" role="form">
+        	<div class="form-group" >	
+        		<div class="input-group" style="width: 250px;">
+            		<span id="ticket-search-button" class="input-group-addon">
+            			<span class="glyphicon glyphicon-search"></span>
+		            </span>
+        			<input type="text" id="ticket_search" name="word" class="form-control" placeholder="#TICKET_ID or KEYWORD" style="ime-mode:disabled;"></input>
+        		</div>
+        	</div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li>&nbsp;&nbsp;&nbsp;</li>
+        <li ><a th:if="${userId=='admin'}" href="#loginModal" id="modal-open" data-toggle="modal" class="nav-page" th:text="${userId +'  '+ userName}">user_id</a></li>
+        <li ><a th:if="${userId!='admin'}" th:href="'user?id='+${userId}" id="modal-open" class="nav-page" th:text="${userId +'  '+ userName}"></a></li>
+      </ul>
+    </div><!--/.navbar-collapse -->
+    
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLable" aria-hidden="true">
+	  <div class="modal-dialog  modal-sm">
+	    <div class="modal-content">
+	    
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h3 class="modal-title" id="loginModalLable">sign in</h3>
+	      </div>
+	      
+	      <div class="modal-body">
+	        <form>
+	          
+	          <div class="form-group">
+	            <label for="user_id" class="control-label">user id</label>
+	            <input type="text" class="form-control" id="modal-user_id" name="user_id"/>
+	            
+	            <label for="password" class="control-label">Password</label>
+	            <input type="password" id="modal-password" name="password" class="form-control" placeholder="Password" required=""></input>
+	          </div>
+	          
+	        </form>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button id="login-button" type="button" class="btn btn-primary">
+	        	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+	        	&nbsp;Sign in
+	        </button>
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+	
+  </div>
+  
+</nav>
+
+
+
+</html>

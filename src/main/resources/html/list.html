@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:substituteby="common :: common_head"></head>
+  <body>
+    <nav th:substituteby="common :: common_nav"></nav>
+    <div class="container">
+      <h3>Ticket List</h3>
+      <div th:unless="${word}" class="panel panel-default">
+        <form id="criteria" class="panel-body form-horizontal" role="form" method="GET">
+          <input type="hidden" name="do-search" />
+          <button id="standard-toggle" class="btn btn-default btn-lg">
+            <!--  <span class="glyphicon glyphicon-hand-right"> </span>-->Standard 
+          </button>
+          <!--/* 検索条件 */-->
+          <div id="standard" style="display: none;">
+          <div id="standard-panel" style="display:none;">
+            <!--/* ステータス */-->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">ステータス</label>
+              <div class="col-sm-10">
+                <label class="checkbox-inline" th:each="statusValue : ${criteria.statusValues}">
+                  <input type="checkbox" name="status" th:value="${statusValue.status}" th:checked="${statusValue.checked}" />
+                  <span th:text="${statusValue.status}"></span>
+                </label>
+              </div>
+            </div>
+            <!--/* マイルストーン */-->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">マイルストーン</label>
+              <div class="col-sm-8">
+                <select name="milestone" class="form-control" multiple="multiple" style="visibility: hidden;">
+                  <option th:each="m : ${criteria.milestones}" th:value="${m}" th:text="${m}" selected="selected"></option>
+                </select>
+              </div>
+            </div>
+            <!--/* 担当者 */-->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">開発者</label>
+              <div class="col-sm-8">
+                <select name="owner" class="form-control" multiple="multiple" style="visibility: hidden;">
+                  <option th:each="o : ${criteria.owners}" th:value="${o}" th:text="${o}" selected="selected"></option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <!--/* 評価者 */-->
+              <label class="col-sm-2 control-label">評価者</label>
+              <div class="col-sm-8">
+                <select name="evaluator" class="form-control" multiple="multiple" style="visibility: hidden;">
+                  <option th:each="o : ${criteria.custom.evaluator}" th:value="${o}" th:text="${o}" selected="selected"></option>
+                </select>
+              </div>
+            </div>
+            <!--/* コンポーネント */-->
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">コンポーネント</label>
+                <div class="col-sm-3">
+                  <select name="component" class="form-control simple-select" multiple="multiple" style="visibility: hidden;">
+                    <option th:each="c : ${components}" th:value="${c.name}" th:text="${c.name}" th:selected="${#lists.contains(criteria.components, c.name)}"></option>
+                  </select>
+                </div>
+                <!--/* タグ */-->
+                <label class="col-sm-2 control-label">タグ</label>
+                <select id="tag" name="tag" class="form-control col-sm-3 scratch-multi-select" multiple="multiple" style="display: none;">
+                  <option th:each="str : ${criteria.custom.tag}" selected="selected" th:value="${str}"></option>
+                </select>
+                <div class="col-sm-3">
+                  <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+                    <span class="selection">
+                      <span class="select2-selection select2-selection--multiple" tabindex="0">
+                        <ul class="select2-selection__rendered" target="tag">
+                          <li th:each="str : ${criteria.custom.tag}" class="select2-selection__choice">
+                            <span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+                            <span th:text="${str}"></span>
+                          </li>
+                          <li class="select2-search select2-search--inline">
+                            <input class="select2-search__field scratch-multi-select-input" type="search" target="tag" style="width: 100%;">
+                            </input>
+                          </li>
+                        </ul>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">顧客名</label>
+              <div class="col-sm-3">
+                <select name="client" class="form-control" multiple="multiple" style="visibility: hidden;">
+                  <option th:each="m : ${criteria.custom.client}" th:value="${m}" th:text="${m}" selected="selected"></option>
+                </select>
+              </div>
+              <label class="col-sm-2 control-label">＠SPトラ対番号</label>
+              <select id="at_suport_trouble_no" name="at_suport_trouble_no" class="form-control col-sm-10 scratch-multi-select" multiple="multiple" style="display: none;">
+                <option th:each="str:${criteria.custom.at_suport_trouble_no}" selected="selected" th:value="${str}"></option>
+              </select>
+              <div class="col-sm-3">
+                <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+                  <span class="selection">
+                    <span class="select2-selection select2-selection--multiple" tabindex="0">
+                      <ul class="select2-selection__rendered" target="at_suport_trouble_no">
+                        <li th:each="str : ${criteria.custom.at_suport_trouble_no}" class="select2-selection__choice">
+                          <span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+                          <span th:text="${str}"></span>
+                        </li>
+                        <li class="select2-search select2-search--inline">
+                          <input class="select2-search__field scratch-multi-select-input" type="search" target="at_suport_trouble_no">
+                          </input>
+                        </li>
+                      </ul>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">キーワード</label>
+                <select id="keywords" name="keywords" class="form-control col-sm-10 scratch-multi-select" multiple="multiple" style="display: none;">
+                  <option th:each="str : ${criteria.keywords}" selected="selected" th:value="${str}"></option>
+                </select>
+                <div class="col-sm-3">
+                  <!-- th:each="str : ${criteria.keywords}" -->
+                  <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+                    <span class="selection">
+                      <span class="select2-selection select2-selection--multiple" tabindex="0">
+                        <ul class="select2-selection__rendered" target="keywords">
+                          <li th:each="str : ${criteria.keywords}" class="select2-selection__choice">
+                            <span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+                            <span th:text="${str}"></span>
+                          </li>
+                          <li class="select2-search select2-search--inline">
+                            <input class="select2-search__field scratch-multi-select-input" type="search" target="keywords">
+                            </input>
+                          </li>
+                        </ul>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+                <label class="col-sm-2 control-label">申請区分</label>
+                <div class="col-sm-3">
+                  <select name="apply_div" class="form-control simple-select" multiple="multiple" style="visibility: hidden;">
+                    <option th:each="c : ${apply_divs}" th:value="${c}" th:text="${c}" th:selected="${#lists.contains(criteria.custom.apply_div, c)}"></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">概要</label>
+                <select id="summary" name="summary" class="form-control col-sm-10 scratch-multi-select" multiple="multiple" style="display: none;">
+                  <option th:each="str : ${criteria.summary}" selected="selected" th:value="${str}"></option>
+                </select>
+                <div class="col-sm-3">
+                  <!-- th:each="str : ${criteria.keywords}" -->
+                  <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+                    <span class="selection">
+                      <span class="select2-selection select2-selection--multiple" tabindex="0">
+                        <ul class="select2-selection__rendered" target="summary">
+                          <li th:each="str : ${criteria.summary}" class="select2-selection__choice">
+                            <span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+                            <span th:text="${str}"></span>
+                          </li>
+                          <li class="select2-search select2-search--inline">
+                            <input class="select2-search__field scratch-multi-select-input" type="search" target="summary">
+                            </input>
+                          </li>
+                        </ul>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+                <label class="col-sm-2 control-label">説明</label>
+                <select id="description" name="description" class="form-control col-sm-10 scratch-multi-select" multiple="multiple" style="display: none;">
+                  <option th:each="str : ${criteria.description}" selected="selected" th:value="${str}"></option>
+                </select>
+                <div class="col-sm-3">
+                  <!-- th:each="str : ${criteria.keywords}" -->
+                  <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+                    <span class="selection">
+                      <span class="select2-selection select2-selection--multiple" tabindex="0">
+                        <ul class="select2-selection__rendered" target="description">
+                          <li th:each="str : ${criteria.description}" class="select2-selection__choice">
+                            <span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+                            <span th:text="${str}"></span>
+                          </li>
+                          <li class="select2-search select2-search--inline">
+                            <input class="select2-search__field scratch-multi-select-input" type="search" target="description">
+                            </input>
+                          </li>
+                        </ul>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">チケットID(抽出します)</label>
+              <select id="ticketId" name="ticketId" class="form-control col-sm-10 scratch-multi-select" multiple="multiple" style="display: none;">
+                <option th:each="str : ${criteria.ticketIds}" selected="selected" th:value="${str}"></option>
+              </select>
+              <div class="col-sm-8">
+                <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+                  <span class="selection">
+                    <span class="select2-selection select2-selection--multiple" tabindex="0">
+                      <ul class="select2-selection__rendered" target="ticketId">
+                        <li th:each="str : ${criteria.ticketIds}" class="select2-selection__choice">
+                          <span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+                          <span th:text="${str}"></span>
+                        </li>
+                        <li class="select2-search select2-search--inline">
+                          <input class="select2-search__field" type="search" id="ticket-id-input" target="ticketId">
+                          </input>
+                        </li>
+                      </ul>
+                    </span>
+                  </span>
+                </span>
+              </div>
+			</div>
+			<div class="form-group">
+	        	<label class="col-sm-2 control-label">コミットファイル(超低速)</label>
+	            <select id="product-files" name="product-files" class="form-control col-sm-10 scratch-multi-select" multiple="multiple" style="display: none;">
+	            	<option th:each="str : ${criteria.productFiles}" selected="selected" th:value="${str}"></option>
+	            </select>
+	            <div class="col-sm-8">
+	            	<span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;">
+	                <span class="selection">
+	                	<span class="select2-selection select2-selection--multiple" tabindex="0">
+	                    <ul class="select2-selection__rendered" target="product-files">
+	                    	<li th:each="str : ${criteria.productFiles}" class="select2-selection__choice">
+	                        	<span class="select2-selection__choice__remove scratch-multi-select-remove">×</span>
+	                         	<span th:text="${str}"></span>
+	                    	</li>
+	                       	<li class="select2-search select2-search--inline">
+	                         	<input class="select2-search__field scratch-multi-select-input" type="search" target="product-files">
+	                        	</input>
+	                       	</li>
+	                    </ul>
+	              	</span>
+	                </span>
+	              </span>
+	          	</div> 
+	      	</div>
+            
+            
+          </div>
+          </div>
+          <hr />
+          <button id="additional-toggle" class="btn btn-default btn-lg">
+            <!--  <span class="glyphicon glyphicon-hand-right"> </span>-->Additional 
+          </button>
+          <!--/* ソート、表示設定 */-->
+          <div id="additional" style="display: none;">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">ソート</label>
+              <div class="col-sm-4">
+                <ul id="sort-candidates" class="list-group ticket-fields">
+                  <li class="list-group-item" th:each="f : ${ticketFields}">
+                    <span th:text="${f.value}" th:value="${f.key}"></span>
+                    <span class="glyphicon glyphicon-arrow-right add-field" aria-hidden="true"></span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-4 col-sm-offset-1">
+                <ul id="sort-targets" class="list-group ticket-fields">
+                  <li class="list-group-item" th:each="sf : ${criteria.sortFields}">
+                    <span th:text="${sf.value}"></span>
+                    <input type="hidden" name="sort-field" th:value="${sf.key.field}">
+                    </input>
+                    <select class="sort-select" name="sort-method">
+                      <option value="asc" th:selected="${!sf.key.desc}">Asc</option>
+                      <option value="desc" th:selected="${sf.key.desc}">Desc</option>
+                    </select>
+                    <span class="glyphicon glyphicon-remove remove-field" aria-hidden="true"></span>
+                    <div th:if="${sfStat.index == 0}" class="pull-right">
+                      <input class="groupBy" name="groupBy" type="checkbox" th:checked="${groupBy}" />
+                      <span>グループ化対象&nbsp;&nbsp;</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-group">
+              <!--  <label class="col-sm-2 control-label">display</label>-->
+              <label class="col-sm-2 control-label">表示項目</label>
+              <div class="col-sm-4">
+                <ul id="display-candidates" class="list-group ticket-fields">
+                  <li class="list-group-item" th:each="f : ${ticketFields}">
+                    <span th:text="${f.value}" th:value="${f.key}"></span>
+                    <span class="glyphicon glyphicon-arrow-right add-field" aria-hidden="true"></span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-4 col-sm-offset-1">
+                <ul id="display-targets" class="list-group ticket-fields">
+                  <li class="list-group-item" th:each="df : ${criteria.displayFields}">
+                    <span th:text="${df.value}"></span>
+                    <input type="hidden" name="display-field" th:value="${df.key}">
+                    </input>
+                    <span class="glyphicon glyphicon-remove remove-field" aria-hidden="true"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--/* 検索実行ボタン */-->
+      <div th:unless="${word}" class="row">
+        <!-- /* 全文検索単語表示 -->
+        <button id="search" type="button" class="btn btn-primary btn-lg pull-right" data-loading-text="Loading...">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Search
+        </button>
+      </div>
+      <div th:if="${word}" class="row">
+        <div class="col-sm-12">
+	        <p>
+	      	  <strong th:text="'「' + ${word} + '」を全文検索！！indexingは1日に1回予定'"></strong>
+	        </p>
+	    </div>
+	  </div>
+      <!--/* 件数表示 */-->
+      <p>
+        <strong id="total" th:text="${total}"></strong>
+        <span th:if="${total >= 500}">or more </span>
+        <span>&nbsp;tickets&nbsp;found.</span>
+      </p>
+      <!--/* 検索結果 */-->
+      <div th:each="result : ${results}">
+        <!--/* グループ化した場合に表示 */-->
+        <div class="ticket-grp" th:unless="${result.groupedBy.equals('nonGrp')}">
+          <span th:text="${result.groupedBy}"></span>
+          <span class="badge" th:text="${result.tickets.size()}"></span>
+        </div>
+        <!--/* チケット一覧 */-->
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table-condensed tickets">
+            <thead>
+              <tr>
+                <th>ticket</th>
+                <th th:each="df : ${criteria.displayFields}" th:text="${df.value}"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="ticket : ${result.tickets}">
+                <td>
+                  <a th:text="${ticket.id}" th:href="'detail?id=' + ${ticket.id}"></a>
+                </td>
+                <td th:each="df : ${criteria.displayFields}">
+                  <span th:text="${ticket.get(df.key)}" th:unless="${df.key.equals('summary') || df.key.equals('description') ||df.key.equals('developper_note')}"></span>
+                  <pre th:text="${ticket.get(df.key)}" th:if="${df.key.equals('summary') || df.key.equals('description') ||df.key.equals('developper_note')}"></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <hr />
+      <footer></footer>
+    </div>
+    <script src="../js/list.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-beta.3/js/select2.min.js"></script>
+  </body>
+</html>

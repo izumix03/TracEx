@@ -1,0 +1,118 @@
+.compare {
+  overflow: auto;
+}
+
+ul {
+	list-style:none;
+}
+
+body{
+	line-height:2;
+}
+
+.loading{
+    background-image:url("/img/loading.gif");
+    background-repeat: no-repeat;
+    float: left;  
+    width : 12px;
+    padding :5;
+}
+
+.load-msg{
+	width : 80px;
+}
+
+section h6,
+dt {
+    background-color: #f5f5f5;
+    border-bottom: solid 1px #ababab;
+    margin: 0px;
+    font-size:14px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+ 
+section h6:before,
+dt:before {
+  display: block;
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 50%;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  margin-top: -8px;
+  background: #FFF;
+}
+ 
+section h6:after,
+dt:after {
+  display: block;
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 50%;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  margin-top: -13px;
+  background: #f5f5f5;
+}
+ 
+section h6.active:before,
+dt.active:before {
+  margin-top: -2px;
+}
+ 
+section h6.active:after,
+dt.active:after {
+  margin-top: 3px;
+}
+ 
+section li,
+dd {
+    background-color: #F2F2F2;
+    border-bottom: solid 1px #D6D6D6;
+    padding: 0px 0 0px 24px;
+}
+ 
+section li a {
+    position: relative;
+    display: block;
+}
+ 
+section li a:before{
+  display: block;
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 50%;
+  right: 17px;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  background: #f5f5f5;
+}
+ 
+section li a:after{
+  display: block;
+  content: "";
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 50%;
+  right: 22px;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  background: #F2F2F2;
+}
+
+.CodeMirror-code pre{
+	line-height:18px;
+}

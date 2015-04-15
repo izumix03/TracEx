@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<form th:fragment="doc" id="doc" class="form-horizontal" role="form" method="POST">
+	<input type="hidden" name="update-doc" />
+	<input type="hidden" name="changetime" th:value="${doc.changetime}" />
+	<input type="hidden" name="id" th:value="${doc.ticket_id}" />
+	
+	<h6>
+		<strong>注意 ： 以下の項目にはお客様の企業名（略称を含む）や個人情報を記述しないでください。</strong>
+	</h6>
+		<!--
+		<div class="col-sm-6">
+			<label class="control-label">Doc編集ロック</label> 
+			<input type="checkbox" class="controls" th:checked="${doc.doc_lock_flg}=='1'" />		
+		</div>
+		-->
+	
+	<blockquote>
+		<a data-toggle="collapse" href="#regularInfo" aria-expanded="false" aria-controls="regularInfo">基本情報</a>
+	</blockquote>
+
+<div class="collapse"  id="regularInfo">
+	<div class="row">
+	  <div class="col-sm-6 form-group">
+		<label class="col-sm-2 control-label">社内向け</label> 
+		<label class="checkbox-inline"> 
+			<input name="doc_shanai_flg" type="checkbox" th:checked="${doc.doc_shanai_flg}=='1'" />
+			<a href="http://krypton/acwiki/index.php/TracDocEditorPlugin#.E7.A4.BE.E5.86.85.E5.90.91.E3.81.91.E3.83.95.E3.83.A9.E3.82.B0.E3.81.AB.E3.81.A4.E3.81.84.E3.81.A6" target="_blank">[項目に関する説明]</a>
+		</label>
+	  </div>
+	  
+	  <div class="col-sm-6 form-group">
+			<label class="col-sm-3 control-label">ZOO_NO</label>
+			<div class="col-sm-6">
+				<input name="doc_devno" type="text" class="form-control" th:value="${doc.doc_devno}"/>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		
+		
+		<div class="col-sm-6 form-group">
+			<label class="col-sm-2 control-label">親チケット</label>
+			<div class="col-sm-6">
+				<input name="doc_related_ticket" type="text" class="form-control" th:value="${doc.doc_related_ticket}"/>
+			</div>
+		</div>
+		
+		<div class="col-sm-6 form-group">
+			<label class="col-sm-3 control-label" >子チケット</label>
+			<div class="col-sm-6" id="doc_related_ticket"></div>
+		</div>
+	</div>
+</div>
+	
+	
+<!-- 改修内容 -->
+	<div class="row">
+		<hr/>
+	</div>
+	<blockquote>
+		<p>改修内容</p>
+	</blockquote>
+	
+	<div class="row">
+		<div class="col-sm-6 form-group">
+			<label class="col-sm-2 control-label">内容種別</label>
+			<div class="col-sm-6">		
+				<select id="doc_type" name="doc_type" class="form-control">
+        			<option th:each="s : ${doc_types}" th:value="${s}" th:text="${s}" th:selected="${s.equals(doc.doc_type)}"></option>
+	        	</select>
+        	</div>
+    	</div>
+    </div>
+    
+	<div class="row">
+	  <div class="col-sm-6 form-group">
+		<div th:if="${doc.doc_type=='不具合修正'}">
+			<label id="pLabal" class="col-sm-2 control-label">不具合現象</label>
+		</div>
+		<div th:if="${doc.doc_type=='機能改善'}">
+			<label class="col-sm-2 control-label">変更点</label>
+		</div>
+		<div th:if="${doc.doc_type=='新規機能'}">
+			<label id="pLabal" class="col-sm-2 control-label">機能の概要</label>
+		</div>
+		<div th:if="${doc.doc_type=='法改正対応'}">
+			<label class="col-sm-2 control-label">法制の概要</label>
+		</div>
+		<div th:if="${doc.doc_type=='不具合開示'}" >
+			<label id="pLabal" class="col-sm-2 control-label">不具合現象</label>
+		</div>
+		<div th:if="${doc.doc_type==''}" >
+			<label id="pLabal" class="col-sm-2 control-label">不具合現象</label>
+		</div>
+		<div th:if="${doc.doc_type==null}" >
+			<label id="pLabal" class="col-sm-2 control-label">不具合現象</label>
+		</div>
+		
+		<div class="col-sm-9">
+			<textarea id="doc_problem" name="doc_problem" class="form-control" th:text="${doc.doc_problem}" rows="10"></textarea>
+		</div>
+	  </div>
+	
+	  <div class="col-sm-6 form-group">
+		<div th:if="${doc.doc_type=='不具合修正'}">
+			<label class="col-sm-3 control-label">結果</label>
+		</div>
+		<div th:if="${doc.doc_type=='機能改善'}">
+			<label class="col-sm-3 control-label">利用方法</label>
+		</div>
+		<div th:if="${doc.doc_type=='新規機'}">
+			<label class="col-sm-3 control-label">想定業務</label>
+		</div>
+		<div th:if="${doc.doc_type=='法改正対応'}">
+			<label class="col-sm-3 control-label">対応</label>
+		</div>
+		<div th:if="${doc.doc_type=='不具合開示'}" >
+			<label class="col-sm-3 control-label">結果</label>
+		</div>
+		<div th:if="${doc.doc_type==''}" >
+			<label class="col-sm-3 control-label">結果</label>
+		</div>
+		<div th:if="${doc.doc_type==null}" >
+			<label class="col-sm-3 control-label">結果</label>
+		</div>
+		
+		<div class="col-sm-9">
+			<textarea id="doc_solution" name="doc_solution" class="form-control" th:text="${doc.doc_solution}" rows="10"></textarea>
+		</div>
+	  </div>
+	</div>
+
+<!--出荷ファイル-->	
+	<div class="row">
+		<hr/>
+	</div>
+	<blockquote>
+		<a data-toggle="collapse" href="#refsInfo" aria-expanded="false" aria-controls="refsInfo">出荷ファイル<span style="font-size: 10px;">(クリックすると最新ファイルを開きます)</span></a>
+	</blockquote>
+
+<div class="collapse" id="refsInfo">
+	<div class="row">
+		<div class="col-sm-12 form-group">
+		  	<label class="col-sm-1 control-label">refs</label>
+		  	<div class="col-sm-11">
+				<div name="refs" id="refs" class="list-group"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12 form-group">
+			<label class="col-sm-1 control-label">exe</label>
+			<div class="col-sm-8">
+				<textarea name="doc_exe_file_name" rows="5" class="form-control" th:text="${doc.doc_exe_file_name}"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--不具合分類-->
+	<div class="row">
+		<hr/>
+	</div>
+	<blockquote>
+		<a data-toggle="collapse" href="#repairKind" aria-expanded="false" aria-controls="repairKind">改修内容分類</a>
+	</blockquote>
+	
+<div class="collapse" id="repairKind">
+	<div class="row fugual-group-check">
+		<p class="legend col-sm-1">不具合分類</p>
+		<p>必ず1つ以上選択して下さい</p>
+	</div>
+	<div class="row group-check">
+		<div th:each="val: ${doc.getFuguaiList()}">
+			<label class="checkbox-inline col-sm-6 group-check">
+				<div class="form-group">
+					<div class="col-sm-2"></div> 
+					<input name="doc_fuguai_g" type="checkbox" th:value="${val}" th:checked="${doc.isCheckedFuguai(val)}"/>
+					<p class="statement" th:text="${val}"></p>
+				</div>
+			</label>
+		</div>
+	</div>
+	
+	<div class="row"></div>
+
+
+<!-- 確認事項 -->
+	<div class="row">
+		<hr/>
+	</div>
+	<div class="row group-check">
+		<p class="legend col-sm-1">確認事項</p>
+	</div>
+	
+	<div class="group-check">
+		<div th:each="val: ${doc.getKakuninList()}">
+			<label class="checkbox-inline col-sm-12 group-check">
+				<div class="form-group">
+					<div class="col-sm-1"></div> 
+					<input name="doc_kakunin_g" type="checkbox" th:value="${val}" th:checked="${doc.isCheckedKakunin(val)}"/>
+					<p class="statement" th:text="${val}"></p>
+				</div>
+			</label>
+		</div>
+	</div>
+	<div class="row"></div>
+
+<!-- 仕様変更 -->	
+	<div class="row">
+		<hr/>
+	</div>
+	
+	<div class="row">
+		<p class="legend col-sm-1">仕様変更</p>
+	</div>
+	
+	<div class="row group-check">
+		<div th:each="val: ${doc.getSiyouList()}">
+			<label class="checkbox-inline col-sm-12 group-check">
+				<div class="form-group">
+					<div class="col-sm-1"></div> 
+					<input name="doc_siyou_g" type="checkbox" th:value="${val}" th:checked="${doc.isCheckedSiyou(val)}"/>
+					<p class="statement" th:text="${val}"></p>
+				</div>
+			</label>
+		</div>
+	</div>
+
+</div>
+
+	
+<!--適用手順-->	
+	<div class="row">
+		<hr/>
+	</div>
+	<blockquote>
+		<a data-toggle="collapse" href="#applyProcess" aria-expanded="false" aria-controls="applyProcess">適用手順</a>
+	</blockquote>
+
+<div class="collapse" id="applyProcess">
+	<div class="row">
+	  <div class="col-sm-12 form-group">
+		<label class="col-sm-1 control-label">適用コメント</label>
+		<div class="col-sm-8">
+			<input name="doc_tekiyou_comment" type="text" th:value="${doc.doc_tekiyou_comment}" class="form-control"/>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="row">
+	  <div class="col-sm-12 form-group">
+		<label class="col-sm-1 control-label">適用順序</label>
+		<div class="col-sm-8">
+			<textarea name="doc_tekiyou_junjo" th:text="${doc.doc_tekiyou_junjo}" rows="4" class="form-control"></textarea>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="row">
+	  <div class="col-sm-12 form-group">
+		<label class="col-sm-1 control-label">その他作業</label>
+		<div class="col-sm-8">
+			<textarea name="doc_tekiyou" th:text="${doc.doc_tekiyou}" rows="4" class="form-control"></textarea>
+		</div>
+	  </div>
+	</div>	
+</div>
+
+<!-- docチェックcustom -->
+	<div class="row">
+		<hr/>
+	</div>
+	<blockquote>
+		<a data-toggle="collapse" href="#docTextCheck" aria-expanded="false" aria-controls="docTextCheck">開発内容説明書の文章チェック</a>
+	</blockquote>	
+
+<div class="collapse" id="docTextCheck">
+	<div class="row">
+		<div class="col-sm-12 form-group">
+			<label class="col-sm-1 control-label">状況</label>
+        	<div class="col-sm-3">
+    		   	<select name="doctext_check" class="form-control">
+		            <option th:each="s : ${doc.getDocTextList()}" th:value="${s}" th:text="${s}" th:selected="${s.equals(ticketCustom.getValue('doctext_check'))}"></option>
+          		</select>
+    		</div>
+    	</div>
+    </div>
+	
+	<div class="row">
+		<div class="col-sm-12 form-group">
+			<label class="col-sm-1 control-label">指摘</label>
+			<div class="col-sm-8">
+				<textarea name="doc_check_memo" rows="3" class="form-control" th:text="${ticketCustom.getValue('doc_check_memo')}"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- QAメモcustom -->
+	<div class="row">
+		<hr/>
+	</div>
+	<blockquote>
+		<p>QA評価用 </p>
+	</blockquote>
+	
+	<div class="row">
+		<div class="col-sm-12 form-group">
+			<label class="col-sm-1 control-label">QA評価メモ</label>
+			<div class="col-sm-8">
+				<textarea name="doc_tester_memo" rows="3" class="form-control" th:text="${ticketCustom.getValue('doc_tester_memo')}"></textarea>
+			</div>
+		</div>
+	</div>
+
+<!-- 更新ボタン -->
+	<div class="row">
+		<hr/>
+	</div>
+	
+	<div class="data-update" style="display: none;"><!--  th:if="${userId}!='admin'">-->
+		<button id="submit-doc" type="button" class="btn btn-primary btn-lg" data-loading-text="Loading...">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Submit
+		</button>
+	</div>
+	
+</form>
+
+</html>

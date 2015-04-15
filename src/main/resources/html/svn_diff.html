@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common :: common_head"></head>
+<body>
+  
+  <nav th:substituteby="common :: common_nav"></nav>
+
+  <div class="container">
+    
+    <div class="row" th:if="${ticket != null}">
+      <div class="col-sm-9">
+        <h3 th:text="${ticket.id + ' (' + ticket.status + ') : ' + ticket.summary}"></h3>
+      </div>
+      <div class="col-sm-3 ticket-time">
+        <span>Created at </span><span th:text="${ticket.timeStr()}"></span><br />
+        <span>Changed at </span><span th:text="${ticket.changetimeStr()}"></span>
+      </div>
+    </div>
+  </div>
+  
+
+  <div>
+	<input type="hidden" id="rev" th:value="${rev}" />
+	<div class="row">
+	<div class="col-sm-1"></div>
+	<ul class="accordion_ul col-sm-11">
+		<li th:each="nodeChange,iterStat : ${nodeChangeList}">
+			<section>
+				
+				<h6 class="col-sm-11 change-code-head" th:text="${nodeChange.path}"></h6>
+				<div class="accordion-base" style="display:none">
+					<div class="load-msg text-center">
+						<img class="load-msg text-center" src="/img/loading.gif"/>
+						<span class="load-msg text-center">Loading･･････</span>
+					</div>
+				</div>
+				
+			</section>
+		</li>
+	</ul>
+	</div>
+  </div>
+	
+	<!--js&css-->
+	<script type="text/javascript" src="/lib/mergely-3.3.9/lib/codemirror.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="/lib/mergely-3.3.9/lib/codemirror.css" />
+	<script type="text/javascript" src="/lib/mergely-3.3.9/lib/mergely.js"></script>
+	<link type="text/css" rel="stylesheet" href="/lib/mergely-3.3.9/lib/mergely.css" />
+	<link type="text/css" rel="stylesheet" href="../css/svn_diff_aft.css" />
+	<script src="../js/svn-diff.js"></script>
+</body>
+</html>

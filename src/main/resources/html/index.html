@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common :: common_head"></head>
+<body>
+  <nav th:substituteby="common :: common_nav"></nav>
+
+<form id="index" class="form-horizontal" method="POST">
+
+  <div class="container">
+    <div class="jumbotron">
+      <div class="type-shine">Welcome to TracEX!</div>
+      <div id="introduction" class="row">
+        <div class="col-sm-6">
+          <img id="heke" alt="heke" src="http://imgcc.naver.jp/kaze/mission/USER/20121017/75/774455/112/300x420x2b26fdaa018d2fc33fca781c.jpg" />
+        </div>
+		
+        <div id="login-div" class="col-sm-3 col-sm-offset-2">
+			
+	        	<div class="login-form" th:if="${userId=='admin'}">
+	        		<div class="row" style="height: 301px;"></div>
+			        <h2 class="form-signin-heading" th:if="${userId!='admin'}">Please sign in</h2>
+			        
+			        <label for="user_id" class="sr-only">Email address</label>
+			        <input type="text" id="user_id" name="user_id" class="form-control" placeholder="User Id" required="" autofocus=""></input>
+			        
+			        <label for="password" class="sr-only">Password</label>
+			        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required=""></input>
+			        <div class="checkbox">
+			          <label>
+			            <input type="checkbox" value="remember-me" onClick="if (this.checked){$('#index').attr('autocomplete', 'on');}else{$('#index').attr('autocomplete', 'off');}"> Remember me</input>
+			          </label>
+		        	</div>
+		        	<button class="btn btn-lg btn-primary btn-block" type="submit">
+		        		<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+		        	</button>
+		        </div>
+		        	
+	        	<div th:if="${userId!='admin'}">
+	        		<div class="row" style="height: 324px;"></div>
+	        		<h2 class="form-signin-heading" >Now signed in..</h2>
+	        		<input type="hidden" name="sign-out" value="out"></input>
+	        		<button class="btn btn-lg btn-primary btn-block" type="submit">
+	        			<span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign out
+	        		</button>
+		        </div>	        	
+	      	
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-5 col-sm-offset-9">
+            <a class="btn btn-link btn-lg" href="list">Or Let's View Ticket!</a>
+        </div>
+      </div>
+    </div>
+	 
+  </div>
+  
+</form>
+
+  <script src="../js/index.js"></script>
+</body>
+</html>

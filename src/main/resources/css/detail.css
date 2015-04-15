@@ -1,0 +1,75 @@
+.tab-content .tab-pane {
+  padding-top: 20px;
+}
+
+.form-group .control-label {
+  padding-right: 15px;
+}
+
+.ticket-time {
+  text-align: right;
+}
+
+label.error {
+  color: #a94442;
+}
+
+input.error{
+   background-color: rgba(255, 97, 0, 0.27);
+}
+
+#ticket select[name=status] {
+  font-weight: bold;
+  color: navy;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  background: inherit;
+  border: none;
+  overflow: auto;w
+  white-space: pre-wrap;
+  max-height: 200px;
+}
+
+.changing-bar {
+	padding:20px;  
+}
+
+h6{
+	color: red;
+}
+
+.group-check {
+	padding-top:0;
+	height:18px;
+}
+
+table.table{
+	margin-bottom:2px;
+}
+
+pre.comment-pre{
+	margin-bottom:18px;
+	
+}
+
+.table>thead>tr.active>th{
+	background-color:darkgray;
+	color:#EFFBFB;
+}
+
+.well-sm{
+	background-color:white;
+	border: 2px solid #e3e3e3;
+}
+
+.dropzone-custom {
+  min-height: 160px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: rgba(0,0,0,3);
+  padding: 23px;
+  background-color:#e6e6fa;  
+}
